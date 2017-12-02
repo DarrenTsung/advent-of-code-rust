@@ -7,8 +7,8 @@ use std::io::Read;
 fn main() {
     let inverse_captcha_input = read_file("data/inverse_captcha_input.txt");
     match inverse_captcha::solve(&inverse_captcha_input) {
-        Some(solution) => println!("Day 1: {}", solution),
-        None => println!("Day 1: Invalid input {}!", &inverse_captcha_input),
+        Ok(solution) => println!("Day 1: {}", solution),
+        Err(e) => println!("Day 1: Error {}!", e),
     }
 
     let corrupted_checksum_input = read_file("data/corrupted_checksum_input.txt");
