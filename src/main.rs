@@ -1,4 +1,5 @@
 mod inverse_captcha;
+mod corrupted_checksum;
 
 use std::fs::File;
 use std::io::Read;
@@ -8,6 +9,12 @@ fn main() {
     match inverse_captcha::solve(&inverse_captcha_input) {
         Some(solution) => println!("Day 1: {}", solution),
         None => println!("Day 1: Invalid input {}!", &inverse_captcha_input),
+    }
+
+    let corrupted_checksum_input = read_file("data/corrupted_checksum_input.txt");
+    match corrupted_checksum::solve(&corrupted_checksum_input) {
+        Ok(solution) => println!("Day 2: {}", solution),
+        Err(e) => println!("Day 2: Error {}!", e),
     }
 }
 
