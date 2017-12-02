@@ -26,3 +26,28 @@ pub fn solve(s : &str) -> Option<u32> {
 
     Some(sum)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn duplicates_sum() {
+        assert!(solve("1122").unwrap() == 3);
+    }
+
+    #[test]
+    fn non_consecutive_doesnt_sum() {
+        assert!(solve("1234").unwrap() == 0);
+    }
+
+    #[test]
+    fn invalid_input_returns_none() {
+        assert!(solve("11-22").is_none());
+    }
+
+    #[test]
+    fn wraps_around_string() {
+        assert!(solve("91212129").unwrap() == 9);
+    }
+}
