@@ -1,5 +1,8 @@
+extern crate nalgebra;
+
 mod inverse_captcha;
 mod corrupted_checksum;
+mod spiral_memory;
 
 use std::fs::File;
 use std::io::Read;
@@ -16,6 +19,8 @@ fn main() {
         Ok(solution) => println!("Day 2: {}", solution),
         Err(e) => println!("Day 2: Error {}!", e),
     }
+
+    println!("Day 3: {}", spiral_memory::solve(368078));
 }
 
 fn read_file(filename: &str) -> String {
