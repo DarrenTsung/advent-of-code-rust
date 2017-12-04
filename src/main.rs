@@ -3,6 +3,7 @@ extern crate nalgebra;
 mod inverse_captcha;
 mod corrupted_checksum;
 mod spiral_memory;
+mod high_entropy_passphrases;
 
 use std::fs::File;
 use std::io::Read;
@@ -21,6 +22,9 @@ fn main() {
     }
 
     println!("Day 3: {}", spiral_memory::solve(368078));
+
+    let high_entropy_passphrases_input = read_file("data/high_entropy_passphrases_input.txt");
+    println!("Day 4: {}", high_entropy_passphrases::valid_count(&high_entropy_passphrases_input));
 }
 
 fn read_file(filename: &str) -> String {
