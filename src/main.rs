@@ -5,6 +5,7 @@ mod corrupted_checksum;
 mod spiral_memory;
 mod high_entropy_passphrases;
 mod twisty_trampoline_maze;
+mod memory_reallocation;
 
 use std::fs::File;
 use std::io::Read;
@@ -29,6 +30,9 @@ fn main() {
 
     let twisty_trampoline_maze_input = read_file("data/twisty_trampoline_maze_input.txt");
     println!("Day 5: {}", twisty_trampoline_maze::solve(&twisty_trampoline_maze_input));
+
+    let memory_reallocation_input = read_file("data/memory_reallocation_input.txt");
+    println!("Day 6: {}", memory_reallocation::solve(&memory_reallocation_input));
 }
 
 fn read_file(filename: &str) -> String {
