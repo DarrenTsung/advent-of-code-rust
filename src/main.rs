@@ -4,6 +4,7 @@ mod inverse_captcha;
 mod corrupted_checksum;
 mod spiral_memory;
 mod high_entropy_passphrases;
+mod twisty_trampoline_maze;
 
 use std::fs::File;
 use std::io::Read;
@@ -25,6 +26,9 @@ fn main() {
 
     let high_entropy_passphrases_input = read_file("data/high_entropy_passphrases_input.txt");
     println!("Day 4: {}", high_entropy_passphrases::valid_count(&high_entropy_passphrases_input));
+
+    let twisty_trampoline_maze_input = read_file("data/twisty_trampoline_maze_input.txt");
+    println!("Day 5: {}", twisty_trampoline_maze::solve(&twisty_trampoline_maze_input));
 }
 
 fn read_file(filename: &str) -> String {
