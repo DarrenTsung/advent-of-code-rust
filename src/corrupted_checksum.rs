@@ -9,8 +9,6 @@ pub fn solve(spreadsheet: &str) -> Result<u32, ParseIntError> {
         let mut low = u32::max_value();
         let mut high = u32::min_value();
 
-        // NOTE (darren): would like to be able to unwrap and error handle
-        // inside the closure, but am unable to.. wonder if there is a better way to do this..
         for val in line.split_whitespace()
             .map(|s| s.parse::<u32>()).collect::<Result<Vec<_>, _>>()? {
             if val < low {
