@@ -1,4 +1,5 @@
 extern crate nalgebra;
+extern crate regex;
 
 mod inverse_captcha;
 mod corrupted_checksum;
@@ -6,6 +7,7 @@ mod spiral_memory;
 mod high_entropy_passphrases;
 mod twisty_trampoline_maze;
 mod memory_reallocation;
+mod recursive_circus;
 
 use std::fs::File;
 use std::io::Read;
@@ -33,6 +35,9 @@ fn main() {
 
     let memory_reallocation_input = read_file("data/memory_reallocation_input.txt");
     println!("Day 6: {}", memory_reallocation::solve(&memory_reallocation_input));
+
+    let recursive_circus_input = read_file("data/recursive_circus_input.txt");
+    println!("Day 7: {}", recursive_circus::solve(&recursive_circus_input).unwrap_or("No Solution"));
 }
 
 fn read_file(filename: &str) -> String {
