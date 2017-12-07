@@ -19,6 +19,8 @@ pub fn solve(tower_input : &str) -> Option<&str> {
         }
     }
 
+    // NOTE (darren): need to properly understand why into_iter
+    // isn't returning slices of the HashSet + instead the direct references
     token_set.into_iter().find(|t| !child_set.contains(t))
 }
 
