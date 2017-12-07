@@ -17,14 +17,14 @@ pub fn solve(memory_bank : &str) -> Result<u32, ParseIntError> {
         }
         seen_memory_banks.insert(memory_bank.clone());
 
-        // NOTE (darren): I don't understand how to compute the max_index here
-        // without borrowing memory_bank - note to ask about this later..
-        let hack_memory_bank = memory_bank.clone();
-        let (max_index, max_value) = hack_memory_bank.iter().enumerate()
-            .max_by(|&(index_a, val_a), &(index_b, val_b)| {
-                val_a.cmp(val_b).then_with(|| index_b.cmp(&index_a))
-            }).unwrap();
-        let mut max_value = *max_value;
+        let (max_index, mut max_value) = {
+            let (max_index, max_value) = memory_bank.iter().enumerate()
+                .max_by(|&(index_a, val_a), &(index_b, val_b)| {
+                    val_a.cmp(val_b).then_with(|| index_b.cmp(&index_a))
+                }).unwrap();
+
+            (max_index, *max_value)
+        };
         memory_bank[max_index] = 0;
 
         let mut current_index = max_index;
