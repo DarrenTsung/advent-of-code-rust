@@ -8,6 +8,7 @@ pub fn solve(s : &str) -> Result<u32, &'static str> {
 
     let mut sum : u32 = 0;
 
+    // NOTE (darren): is this the best way to get the last digit?
     let last_char = s.chars().rev().next().unwrap(); // unwrap ok because s.len() > 0
     let mut previous_digit = helper_to_digit(last_char)?;
 
