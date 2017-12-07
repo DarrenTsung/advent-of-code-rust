@@ -8,6 +8,8 @@ pub fn solve(maze_structure : &str) -> u32 {
     let maze_length = maze_tokens.len();
 
     loop {
+        // NOTE (darren): is conversion to usize correct here?
+        // it seems good because it's only valid due to context
         let next_index = index + maze_tokens[index as usize];
         if next_index < 0 || next_index >= maze_length as i32 {
             return step_count + 1;
