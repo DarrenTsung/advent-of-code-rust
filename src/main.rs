@@ -31,7 +31,10 @@ fn main() {
     println!("Day 4: {}", high_entropy_passphrases::valid_count(&high_entropy_passphrases_input));
 
     let twisty_trampoline_maze_input = read_file("data/twisty_trampoline_maze_input.txt");
-    println!("Day 5: {}", twisty_trampoline_maze::solve(&twisty_trampoline_maze_input));
+    match twisty_trampoline_maze::solve(&twisty_trampoline_maze_input) {
+        Ok(solution) => println!("Day 5: {}", solution),
+        Err(e) => println!("Day 5: Error while running: {}!", e),
+    }
 
     let memory_reallocation_input = read_file("data/memory_reallocation_input.txt");
     println!("Day 6: {}", memory_reallocation::solve(&memory_reallocation_input));
