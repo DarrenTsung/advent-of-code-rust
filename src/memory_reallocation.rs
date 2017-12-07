@@ -1,9 +1,11 @@
 // Problem Location: http://adventofcode.com/2017/day/6
 use std::collections::HashSet;
+use std::result::Result;
+use std::num::ParseIntError;
 
-pub fn solve(memory_bank : &str) -> u32 {
+pub fn solve(memory_bank : &str) -> Result<u32, ParseIntError> {
     let mut memory_bank : Vec<i32> = memory_bank.split_whitespace()
-        .map(|s| s.parse::<i32>().unwrap()).collect();
+        .map(|s| s.parse::<i32>()).collect::<Result<Vec<_>, _>>()?;
     let memory_bank_len = memory_bank.len();
 
     let mut seen_memory_banks : HashSet<Vec<i32>> = HashSet::new();
@@ -11,7 +13,7 @@ pub fn solve(memory_bank : &str) -> u32 {
 
     loop {
         if seen_memory_banks.contains(&memory_bank) {
-            return iterations;
+            return Ok(iterations);
         }
         seen_memory_banks.insert(memory_bank.clone());
 
@@ -44,16 +46,16 @@ mod tests {
 
     #[test]
     fn handles_basic_case() {
-        assert_eq!(solve("0 2 7 0"), 5);
+        assert_eq!(solve("0 2 7 0"), Ok(5));
     }
 
     #[test]
     fn handles_simple_case() {
-        assert_eq!(solve("0 1"), 2);
+        assert_eq!(solve("0 1"), Ok(2));
     }
 
     #[test]
     fn handles_only_one_iteration() {
-        assert_eq!(solve("1"), 1);
+        assert_eq!(solve("1"), Ok(1));
     }
 }

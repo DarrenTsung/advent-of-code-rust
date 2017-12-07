@@ -33,11 +33,14 @@ fn main() {
     let twisty_trampoline_maze_input = read_file("data/twisty_trampoline_maze_input.txt");
     match twisty_trampoline_maze::solve(&twisty_trampoline_maze_input) {
         Ok(solution) => println!("Day 5: {}", solution),
-        Err(e) => println!("Day 5: Error while running: {}!", e),
+        Err(e) => println!("Day 5: Error {}!", e),
     }
 
     let memory_reallocation_input = read_file("data/memory_reallocation_input.txt");
-    println!("Day 6: {}", memory_reallocation::solve(&memory_reallocation_input));
+    match memory_reallocation::solve(&memory_reallocation_input) {
+        Ok(solution) => println!("Day 6: {}", solution),
+        Err(e) => println!("Day 6: Error {}!", e),
+    }
 
     let recursive_circus_input = read_file("data/recursive_circus_input.txt");
     println!("Day 7: {}", recursive_circus::solve(&recursive_circus_input).unwrap_or("No Solution"));
