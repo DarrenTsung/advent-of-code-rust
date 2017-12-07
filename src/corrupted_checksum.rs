@@ -1,7 +1,8 @@
 // Problem Location: http://adventofcode.com/2017/day/2
 use std::result::Result;
+use std::num::ParseIntError;
 
-pub fn solve(spreadsheet: &str) -> Result<u32, &'static str> {
+pub fn solve(spreadsheet: &str) -> Result<u32, ParseIntError> {
     let mut checksum = 0;
 
     for line in spreadsheet.lines() {
@@ -10,18 +11,14 @@ pub fn solve(spreadsheet: &str) -> Result<u32, &'static str> {
 
         // NOTE (darren): would like to be able to unwrap and error handle
         // inside the closure, but am unable to.. wonder if there is a better way to do this..
-        for val_result in line.split_whitespace().map(|s| s.parse::<u32>()) {
-            match val_result {
-                Err(_e) => return Err("Failed to parse spreadsheet into u32's!"),
-                Ok(val) => {
-                    if val < low {
-                        low = val;
-                    }
+        for val in line.split_whitespace()
+            .map(|s| s.parse::<u32>()).collect::<Result<Vec<_>, _>>()? {
+            if val < low {
+                low = val;
+            }
 
-                    if high < val {
-                        high = val;
-                    }
-                }
+            if high < val {
+                high = val;
             }
         }
 
