@@ -26,8 +26,8 @@ pub fn solve(data_index : u32) -> u32 {
             const STRIDE_DIRECTIONS : [IntVector2; 4] = [IntVector2 { x: 0, y: 1 }, IntVector2 { x: -1, y: 0 }, IntVector2 { x: 0, y: -1 }, IntVector2 { x: 1, y: 0 }];
             for direction in STRIDE_DIRECTIONS.iter() {
                 // stride_amount becomes 0 after we've walked to the index
-                let stride_amount = min(max(indexes_off, 0), side_stride_length);
-                data_index_position += direction * IntVector2 { x: stride_amount as i32, y: stride_amount as i32 };
+                let stride_amount = min(max(indexes_off, 0), side_stride_length) as i32;
+                data_index_position += direction * IntVector2 { x: stride_amount, y: stride_amount };
                 indexes_off -= if side_stride_length > indexes_off { indexes_off } else { side_stride_length }
             }
 
