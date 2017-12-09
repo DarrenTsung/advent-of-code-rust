@@ -1,5 +1,7 @@
 extern crate nalgebra;
 extern crate regex;
+#[macro_use]
+extern crate simple_error;
 
 mod inverse_captcha;
 mod corrupted_checksum;
@@ -8,6 +10,7 @@ mod high_entropy_passphrases;
 mod twisty_trampoline_maze;
 mod memory_reallocation;
 mod recursive_circus;
+mod registers;
 
 use std::fs::File;
 use std::io::Read;
@@ -44,6 +47,12 @@ fn main() {
 
     let recursive_circus_input = read_file("data/recursive_circus_input.txt");
     println!("Day 7: {}", recursive_circus::solve(&recursive_circus_input).unwrap_or("No Solution"));
+
+    let registers_input = read_file("data/registers_input.txt");
+    match registers::run_instructions(&registers_input) {
+        Ok(solution) => println!("Day 8: {}", solution),
+        Err(e) => println!("Day 8: Error {}!", e),
+    }
 }
 
 fn read_file(filename: &str) -> String {
