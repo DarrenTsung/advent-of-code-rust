@@ -14,19 +14,14 @@ mod registers;
 
 use std::fs::File;
 use std::io::Read;
+use std::fmt::Display;
 
 fn main() {
     let inverse_captcha_input = read_file("data/inverse_captcha_input.txt");
-    match inverse_captcha::solve(&inverse_captcha_input) {
-        Ok(solution) => println!("Day 1: {}", solution),
-        Err(e) => println!("Day 1: Error {}!", e),
-    }
+    unwrap_day_result(1, inverse_captcha::solve(&inverse_captcha_input));
 
     let corrupted_checksum_input = read_file("data/corrupted_checksum_input.txt");
-    match corrupted_checksum::solve(&corrupted_checksum_input) {
-        Ok(solution) => println!("Day 2: {}", solution),
-        Err(e) => println!("Day 2: Error {}!", e),
-    }
+    unwrap_day_result(2, corrupted_checksum::solve(&corrupted_checksum_input));
 
     println!("Day 3: {}", spiral_memory::solve(368078));
 
@@ -34,24 +29,25 @@ fn main() {
     println!("Day 4: {}", high_entropy_passphrases::valid_count(&high_entropy_passphrases_input));
 
     let twisty_trampoline_maze_input = read_file("data/twisty_trampoline_maze_input.txt");
-    match twisty_trampoline_maze::solve(&twisty_trampoline_maze_input) {
-        Ok(solution) => println!("Day 5: {}", solution),
-        Err(e) => println!("Day 5: Error {}!", e),
-    }
+    unwrap_day_result(5, twisty_trampoline_maze::solve(&twisty_trampoline_maze_input));
 
     let memory_reallocation_input = read_file("data/memory_reallocation_input.txt");
-    match memory_reallocation::solve(&memory_reallocation_input) {
-        Ok(solution) => println!("Day 6: {}", solution),
-        Err(e) => println!("Day 6: Error {}!", e),
-    }
+    unwrap_day_result(6, memory_reallocation::solve(&memory_reallocation_input));
 
     let recursive_circus_input = read_file("data/recursive_circus_input.txt");
     println!("Day 7: {}", recursive_circus::solve(&recursive_circus_input).unwrap_or("No Solution"));
 
     let registers_input = read_file("data/registers_input.txt");
-    match registers::run_instructions(&registers_input) {
-        Ok(solution) => println!("Day 8: {}", solution),
-        Err(e) => println!("Day 8: Error {}!", e),
+    unwrap_day_result(8, registers::run_instructions(&registers_input));
+}
+
+fn unwrap_day_result<T, TError>(day : u32, result : Result<T, TError>)
+    where T : Display,
+          TError : Display
+{
+    match result {
+        Ok(solution) => println!("Day {}: {}", day, solution),
+        Err(e) => println!("Day {}: Error {}!", day, e),
     }
 }
 
