@@ -12,6 +12,7 @@ mod memory_reallocation;
 mod recursive_circus;
 mod registers;
 mod stream_processing;
+mod knot_hash;
 
 use std::fs::File;
 use std::io::Read;
@@ -43,6 +44,9 @@ fn main() {
 
     let stream_processing_input = read_file("data/stream_processing_input.txt");
     println!("Day 9: {}", stream_processing::count_group_score(&stream_processing_input));
+
+    let knot_hash_input = read_file("data/knot_hash_input.txt");
+    unwrap_day_result(10, knot_hash::hash(&knot_hash_input));
 }
 
 fn unwrap_day_result<T, TError>(day : u32, result : Result<T, TError>)
