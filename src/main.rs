@@ -11,6 +11,7 @@ mod twisty_trampoline_maze;
 mod memory_reallocation;
 mod recursive_circus;
 mod registers;
+mod stream_processing;
 
 use std::fs::File;
 use std::io::Read;
@@ -39,6 +40,9 @@ fn main() {
 
     let registers_input = read_file("data/registers_input.txt");
     unwrap_day_result(8, registers::run_instructions(&registers_input));
+
+    let stream_processing_input = read_file("data/stream_processing_input.txt");
+    println!("Day 9: {}", stream_processing::count_group_score(&stream_processing_input));
 }
 
 fn unwrap_day_result<T, TError>(day : u32, result : Result<T, TError>)

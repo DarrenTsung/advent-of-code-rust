@@ -11,3 +11,4 @@ pub mod twisty_trampoline_maze;
 pub mod memory_reallocation;
 pub mod recursive_circus;
 pub mod registers;
+pub mod stream_processing;
