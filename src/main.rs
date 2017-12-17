@@ -13,6 +13,7 @@ mod recursive_circus;
 mod registers;
 mod stream_processing;
 mod knot_hash;
+mod hex_ed;
 
 use std::fs::File;
 use std::io::Read;
@@ -47,6 +48,9 @@ fn main() {
 
     let knot_hash_input = read_file("data/knot_hash_input.txt");
     unwrap_day_result(10, knot_hash::hash(&knot_hash_input));
+
+    let hex_ed_input = read_file("data/hex_ed_input.txt");
+    unwrap_day_result(11, hex_ed::path_reduction(&hex_ed_input));
 }
 
 fn unwrap_day_result<T, TError>(day : u32, result : Result<T, TError>)
