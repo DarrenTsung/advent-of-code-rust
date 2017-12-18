@@ -14,10 +14,11 @@ mod registers;
 mod stream_processing;
 mod knot_hash;
 mod hex_ed;
+mod digital_plumber;
 
+use std::fmt::Display;
 use std::fs::File;
 use std::io::Read;
-use std::fmt::Display;
 
 fn main() {
     let inverse_captcha_input = read_file("data/inverse_captcha_input.txt");
@@ -51,6 +52,9 @@ fn main() {
 
     let hex_ed_input = read_file("data/hex_ed_input.txt");
     unwrap_day_result(11, hex_ed::path_reduction(&hex_ed_input));
+
+    let digital_plumber_input = read_file("data/digital_plumber_input.txt");
+    unwrap_day_result(12, digital_plumber::count_connected(&digital_plumber_input));
 }
 
 fn unwrap_day_result<T, TError>(day : u32, result : Result<T, TError>)

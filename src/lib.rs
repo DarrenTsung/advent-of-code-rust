@@ -14,3 +14,4 @@ pub mod registers;
 pub mod stream_processing;
 pub mod knot_hash;
 pub mod hex_ed;
+pub mod digital_plumber;
