@@ -40,9 +40,7 @@ fn count_connected_parsed(graph : HashMap<u32, Vec<u32>>) -> u32 {
 
     queue.push_back(0);
 
-    while queue.len() > 0 {
-        let current = queue.pop_front().unwrap();
-
+    while let Some(current) = queue.pop_front() {
         if visited.contains(&current) {
             continue;
         }
