@@ -15,6 +15,7 @@ mod stream_processing;
 mod knot_hash;
 mod hex_ed;
 mod digital_plumber;
+mod packet_scanners;
 
 use std::fmt::Display;
 use std::fs::File;
@@ -55,6 +56,9 @@ fn main() {
 
     let digital_plumber_input = read_file("data/digital_plumber_input.txt");
     unwrap_day_result(12, digital_plumber::count_connected(&digital_plumber_input));
+
+    let packet_scanners_input = read_file("data/packet_scanners_input.txt");
+    unwrap_day_result(13, packet_scanners::calculate_severity(&packet_scanners_input));
 }
 
 fn unwrap_day_result<T, TError>(day : u32, result : Result<T, TError>)
