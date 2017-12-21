@@ -24,7 +24,7 @@ pub fn solve(data_index : u32) -> u32 {
 
             // Stride in a spiral counter-clockwise
             const STRIDE_DIRECTIONS : [IntVector2; 4] = [IntVector2 { x: 0, y: 1 }, IntVector2 { x: -1, y: 0 }, IntVector2 { x: 0, y: -1 }, IntVector2 { x: 1, y: 0 }];
-            for direction in STRIDE_DIRECTIONS.iter() {
+            for direction in &STRIDE_DIRECTIONS {
                 // stride_amount becomes 0 after we've walked to the index
                 let stride_amount = min(max(indexes_off, 0), side_stride_length) as i32;
                 data_index_position += direction * IntVector2 { x: stride_amount, y: stride_amount };
