@@ -8,7 +8,7 @@ use std::result::Result;
 
 pub fn count_connected(graph_input : &str) -> Result<u32, Box<Error>> {
     let graph = parse_graph_input(graph_input)?;
-    Ok(count_connected_parsed(graph))
+    Ok(count_connected_parsed(&graph))
 }
 
 fn parse_graph_input(graph_input : &str) -> Result<HashMap<u32, Vec<u32>>, Box<Error>> {
@@ -34,7 +34,7 @@ fn parse_graph_input(graph_input : &str) -> Result<HashMap<u32, Vec<u32>>, Box<E
     Ok(graph)
 }
 
-fn count_connected_parsed(graph : HashMap<u32, Vec<u32>>) -> u32 {
+fn count_connected_parsed(graph : &HashMap<u32, Vec<u32>>) -> u32 {
     let mut visited = HashSet::new();
     let mut queue = VecDeque::new();
 
@@ -77,7 +77,7 @@ mod tests {
         graph.insert(4, vec!(2, 3, 6));
         graph.insert(5, vec!(6));
         graph.insert(6, vec!(4, 5));
-        assert_eq!(count_connected_parsed(graph), 6);
+        assert_eq!(count_connected_parsed(&graph), 6);
     }
 
     #[test]
