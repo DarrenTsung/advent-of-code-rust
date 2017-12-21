@@ -1,4 +1,5 @@
 #![cfg_attr(feature="clippy", feature(plugin))]
+#![cfg_attr(feature="clippy", feature(plugin))]
 extern crate nalgebra;
 extern crate regex;
 #[macro_use]
