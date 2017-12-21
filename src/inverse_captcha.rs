@@ -2,7 +2,7 @@
 use std::result::Result;
 
 pub fn solve(s : &str) -> Result<u32, &'static str> {
-    if s.len() == 0 {
+    if s.is_empty() {
         return Ok(0);
     }
 
