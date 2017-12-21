@@ -1,6 +1,6 @@
 // Problem Location: http://adventofcode.com/2017/day/11
-use std::option::Option;
 use std::ops::Add;
+use std::option::Option;
 
 pub fn path_reduction(path : &str) -> Result<u32, ParseHexDirectionError> {
     let path : Vec<HexDirection> = path.split(',')
@@ -33,16 +33,14 @@ fn reduce_path_coordinate(path : Vec<HexDirection>) -> u32 {
     }
 
     let end = path.into_iter().fold(Pt(0, 0), |pos, dir| {
-        let next = pos + match dir {
+        pos + match dir {
             HexDirection::N => Pt(0, 1),
             HexDirection::NE => Pt(1, 0),
             HexDirection::SE => Pt(1, -1),
             HexDirection::S => Pt(0, -1),
             HexDirection::SW => Pt(-1, 0),
             HexDirection::NW => Pt(-1, 1),
-        };
-
-        next
+        }
     });
 
     dist(end)
@@ -104,8 +102,8 @@ fn combine_one_way(direction : &HexDirection, other_direction : &HexDirection) -
 }
 */
 
-use std::fmt;
 use std::error;
+use std::fmt;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct ParseHexDirectionError;
