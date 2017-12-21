@@ -22,7 +22,7 @@ fn parse_security_input(security_input : &str) -> Result<HashMap<u32, u32>, Pars
 fn calculate_severity_parsed(security : HashMap<u32, u32>) -> u32 {
     let mut severity = 0;
 
-    for (guard_depth, patrol_range) in security.iter() {
+    for (guard_depth, patrol_range) in &security {
         let guard_position = guard_position_at_time(*patrol_range, *guard_depth);
         if guard_position == 0 {
             severity += guard_depth * patrol_range;
