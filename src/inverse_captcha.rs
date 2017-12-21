@@ -27,8 +27,8 @@ fn helper_to_digit(c: char) -> Result<u32, &'static str> {
     const RADIX: u32 = 10;
 
     match c.to_digit(RADIX) {
-        Some(digit) => return Ok(digit),
-        None => return Err("Failed to parse digit (not 0-9) inside input!"),
+        Some(digit) => Ok(digit),
+        None => Err("Failed to parse digit (not 0-9) inside input!"),
     }
 }
 
