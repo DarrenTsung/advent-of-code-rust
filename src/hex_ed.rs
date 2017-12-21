@@ -28,7 +28,7 @@ fn dist(pt: Pt) -> u32 {
 }
 
 fn reduce_path_coordinate(path : Vec<HexDirection>) -> u32 {
-    if path.len() <= 0 {
+    if path.len() == 0 {
         return 0;
     }
 
