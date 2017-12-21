@@ -31,9 +31,7 @@ fn hash_internal(list_size : u32, lengths : Vec<u32>) -> u32 {
             let wrapped_high : usize = (high % list_size) as usize;
             let wrapped_low : usize = (low % list_size) as usize;
 
-            let swap = list[wrapped_high];
-            list[wrapped_high] = list[wrapped_low];
-            list[wrapped_low] = swap;
+            list.swap(wrapped_high, wrapped_low);
 
             high -= 1;
             low += 1;
