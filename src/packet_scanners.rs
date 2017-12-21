@@ -41,9 +41,9 @@ fn guard_position_at_time(patrol_range : u32, time : u32) -> u32 {
     let mod_time = time % repeat_range;
 
     if mod_time < patrol_range {
-        return mod_time;
+        mod_time
     } else {
-        return ((patrol_range - 1) * 2) - mod_time;
+        ((patrol_range - 1) * 2) - mod_time
     }
 }
 
