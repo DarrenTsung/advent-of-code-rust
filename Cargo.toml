@@ -8,3 +8,6 @@ nalgebra = "0.10.*"
 regex = "0.2"
 simple-error = "0.1"
 clippy = {version = "*", optional = true}
+
+[features]
+default = []
